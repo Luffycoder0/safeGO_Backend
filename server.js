@@ -1,4 +1,3 @@
-const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const http = require('http');
@@ -43,6 +42,8 @@ const io = new Server(server, {
     methods: ['GET', 'POST'],
   },
 });
+
+app.set('io', io);
 
 //////////////////////////////////////////
 // Socket.io
