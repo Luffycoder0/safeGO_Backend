@@ -53,6 +53,12 @@ exports.updateStatus = catchAsync(async (req, res, next) => {
     },
     { new: true, runValidators: true },
   );
+
+  const io = req.app.get('io');
+  if (io) {
+    io.emit('dashboardUpdate', updatedUser);
+  }
+
   res.status(200).json({
     status: 'success',
     data: {
