@@ -20,6 +20,14 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getAllDrivers = catchAsync(async (req, res, next) => {
+  const drivers = await User.find({ role: 'user' });
+  res.status(200).json({
+    status: 'success',
+    data: drivers,
+  });
+});
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm) {
     return next(
