@@ -51,6 +51,7 @@ router
     authController.restrictTo('admin'),
     userController.deleteUser,
   );
+router.get('/drivers', authController.protect, userController.getAllDrivers);
 
 router.patch(
   '/updateStatus',
