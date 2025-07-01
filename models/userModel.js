@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Tell us ur name'],
   },
+  coName: {
+    type: String,
+    required: [true, 'Provide the company name!'],
+  },
   nationalID: {
     type: Number,
     required: [true, 'Provide a valid national ID'],
@@ -27,6 +31,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ['user', 'guide', 'lead-guide', 'admin'],
     default: 'user',
+  },
+  phone: {
+    type: String,
+    length: [13, 'The phone number must be 13 character'],
   },
   password: {
     type: String,
@@ -71,6 +79,10 @@ const userSchema = new mongoose.Schema({
     default: 'awake',
   },
   estimatedArrival: Date,
+  rate: {
+    type: Number,
+    default: 0,
+  },
 });
 
 userSchema.pre(/^find/, function (next) {
