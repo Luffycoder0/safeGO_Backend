@@ -74,7 +74,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   if (!token) {
     return next(
-      new AppError('You can not access the tours before logging in!'),
+      new AppError('You can not access the users before logging in!'),
       401,
     );
   }
@@ -101,8 +101,9 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.restrictTo = (...roles) => {
-  return (req, res, next) => {
+exports.restrictTo =
+  (...roles) =>
+  (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(
         new AppError(
@@ -113,7 +114,6 @@ exports.restrictTo = (...roles) => {
     }
     next();
   };
-};
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   // Get POSTed email
