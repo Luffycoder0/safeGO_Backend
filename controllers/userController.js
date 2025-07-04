@@ -82,20 +82,6 @@ exports.createUser = (req, res) => {
   });
 };
 
-exports.getUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'Error in internal server',
-  });
-};
-
-exports.updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'Error in internal server',
-  });
-};
-
 exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
@@ -104,10 +90,3 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
-
-exports.deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'Error in internal server',
-  });
-};
