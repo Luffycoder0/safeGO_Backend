@@ -34,29 +34,30 @@ router
     authController.restrictTo('admin'),
     userController.createUser,
   );
-router
-  .route('/:id')
-  .get(
-    authController.protect,
-    authController.restrictTo('admin'),
-    userController.getUser,
-  )
-  .patch(
-    authController.protect,
-    authController.restrictTo('admin'),
-    userController.updateUser,
-  )
-  .delete(
-    authController.protect,
-    authController.restrictTo('admin'),
-    userController.deleteUser,
-  );
+// router
+//   .route('/:id')
+//   .get(
+//     authController.protect,
+//     authController.restrictTo('admin'),
+//     userController.getUser,
+//   )
+//   .patch(
+//     authController.protect,
+//     authController.restrictTo('admin'),
+//     userController.updateUser,
+//   )
+//   .delete(
+//     authController.protect,
+//     authController.restrictTo('admin'),
+//     userController.deleteUser,
+//   );
 router.get(
   '/drivers',
   authController.protect,
   authController.restrictTo('admin'),
   userController.getAllDrivers,
 );
+
 router.patch(
   '/updateStatus',
   authController.protect,
