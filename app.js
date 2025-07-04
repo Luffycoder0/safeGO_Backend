@@ -6,6 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routers/userRouter');
@@ -35,7 +36,7 @@ app.use(
   cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    credentials: true,
+    credentials: false,
   }),
 );
 
@@ -78,4 +79,5 @@ app.all('*', (req, res, next) => {
 
 // Global error handling middleware
 app.use(globalErrorHandler);
+
 module.exports = app;
